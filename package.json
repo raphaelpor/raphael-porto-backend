@@ -4,5 +4,40 @@
   "main": "src/index.js",
   "author": "Raphael Porto",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "_build": "rm -rf ./dist/*; yarn babel src/ -d dist/ --ignore src/**/*.test.js",
+    "build": "yarn _build",
+    "deploy": "yarn audit; yarn build && echo 'No deploy configured.'",
+    "flow": "flow status",
+    "lint": "prettier src/**/* --write --single-quote --trailing-comma all",
+    "prebuild": "yarn lint && yarn flow && yarn test",
+    "start": "yarn build && node dist/index.js",
+    "test": "jest --coverage",
+    "watch-start": "npx nodemon --exec 'yarn _build; node dist/index.js' ./dist/index.js -w ./src"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-jest": "^24.9.0",
+    "flow-bin": "0.109.0",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.3",
+    "prettier": "^1.18.2"
+  },
+  "jest": {
+    "verbose": false,
+    "silent": true,
+    "testURL": "http://localhost/",
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/node_modules/"
+    ]
+  }
 }
