@@ -1,19 +1,25 @@
 // @flow
 const express = require('express');
 
-const setupMorgan = require('./helpers/setupMorgan');
-const log = require('./helpers/log');
 const config = require('./config')();
+const log = require('./helpers/log');
+const setupMorgan = require('./helpers/setupMorgan');
+
+const movieTralerRouter = require('./routes/movieTralerRouter');
 
 const app = express();
 
 // Log all requests
 app.use(setupMorgan());
 
-app.get('/healthcheck', (req: any, res: Object): any => res.send('WORKING'));
-
+// Disable for security reasons
 app.disable('x-powered-by');
 
+// Routes
+app.get('/healthcheck', (req: any, res: Object): any => res.send('WORKING'));
+app.use('/movie-trailer', movieTralerRouter);
+
+// Start server
 app.listen(config.port, () => {
   log(
     'server',
