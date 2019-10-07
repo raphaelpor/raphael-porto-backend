@@ -3,7 +3,7 @@ const log = require('../../helpers/log');
 
 const getImdbUri = require('./getImdbUri');
 
-const LOG_TAG = 'movie-trailer get';
+const LOG_TAG = 'movie-trailer GET';
 const BASE_URL = 'content.viaplay.se';
 
 type RequestType = {
@@ -40,12 +40,19 @@ const get = async (req: RequestType, res: ResponseType) => {
       return;
     }
 
-    res.json(imdbUri);
+    const jsonResponse = {
+      trailers: [imdbUri],
+    };
+    res.json(jsonResponse);
     log(LOG_TAG, `${imdbUri} > 200 - Request OK.`);
   } catch (error) {
     res.sendStatus(500);
     log(LOG_TAG, error);
   }
 };
+
+// e.g.
+// https://www.imdb.com/title/tt1951266/?ref_ext_viaplay
+// http://api.themoviedb.org/3/movie/tt1951266/videos?api_key=d9bacbdc47c8ef0f48ca0d4ac8059d2a
 
 module.exports = get;
