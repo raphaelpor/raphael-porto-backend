@@ -12,6 +12,10 @@ describe('log', () => {
     log('test', 'message');
     const argument1 = '\x1b[33m%s\x1b[0m';
     expect(console.log).toHaveBeenCalledTimes(1);
-    expect(console.log).toHaveBeenCalledWith(argument1, '>>> test: ', 'message');
+    expect(console.log).toHaveBeenCalledWith(
+      argument1,
+      '>>> test: ',
+      'message'
+    );
   });
 });

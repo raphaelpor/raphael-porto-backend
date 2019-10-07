@@ -16,15 +16,15 @@ describe('movie-trailer/ error', () => {
     sendStatus: jest.fn(),
   };
 
-  test('returns error if don\'t have a parameter', () => {
+  test("returns error if don't have a parameter", () => {
     get(request, response);
 
     expect(response.sendStatus).toHaveBeenCalledTimes(1);
     expect(response.sendStatus).toHaveBeenCalledWith(400);
   });
 
-  test('returns error if don\'t have a valid parameter', () => {
-    request.params = ['error-test']
+  test("returns error if don't have a valid parameter", () => {
+    request.params = ['error-test'];
     get(request, response);
 
     expect(response.sendStatus).toHaveBeenCalledTimes(2);
@@ -45,7 +45,7 @@ describe('movie-trailer/ success', () => {
     get(request, response);
   });
 
-  test('returns "Working"',() => {
+  test('returns "Working"', () => {
     expect(response.send).toHaveBeenCalledWith('WORKING');
   });
 });
@@ -55,7 +55,9 @@ describe('movie-trailer/ request error', () => {
     params: ['https://content.viaplay.se/pc-se/film/arrival-2016'],
   };
   const response = {
-    send: jest.fn(() => { throw new Error(); }), // it simulate a request error for now
+    send: jest.fn(() => {
+      throw new Error();
+    }), // it simulate a request error for now
     sendStatus: jest.fn(),
   };
 
@@ -63,7 +65,7 @@ describe('movie-trailer/ request error', () => {
     get(request, response);
   });
 
-  test('returns error 500',() => {
+  test('returns error 500', () => {
     expect(response.sendStatus).toHaveBeenCalledWith(500);
   });
 });

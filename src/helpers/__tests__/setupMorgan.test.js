@@ -8,10 +8,11 @@ describe('setupMorgan()', () => {
     expect(setupMorgan).toBeDefined();
   });
 
-  test('calls Morgan with the right parameters',() => {
+  test('calls Morgan with the right parameters', () => {
     setupMorgan();
 
-    const expected = ':remote-addr - :remote-user [:date[clf]] \":method :url HTTP/:http-version\" :status \"content-length\" :res[content-length] \":referrer\" \":user-agent\"  - :response-time ms';
+    const expected =
+      ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status "content-length" :res[content-length] ":referrer" ":user-agent"  - :response-time ms';
     expect(morgan).toHaveBeenCalled();
     expect(morgan).toHaveBeenCalledTimes(1);
     expect(morgan).toHaveBeenCalledWith(expected);

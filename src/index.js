@@ -21,8 +21,5 @@ app.use('/movie-trailer', movieTralerRouter);
 
 // Start server
 app.listen(config.port, () => {
-  log(
-    'server',
-    `Server running at: http://${config.hostName}:${config.port}/`,
-  );
+  log('server', `Server running at: http://${config.hostName}:${config.port}/`);
 });
