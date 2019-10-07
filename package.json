@@ -10,13 +10,14 @@
     "build": "yarn _build",
     "deploy": "yarn audit; yarn build && echo 'No deploy configured.'",
     "flow": "flow status",
-    "lint": "prettier src/**/* --write --single-quote --trailing-comma all",
+    "lint": "npx eslint src --fix",
     "prebuild": "yarn lint && yarn flow && yarn test",
     "start": "yarn build && node dist/index.js",
     "test": "jest --coverage",
     "watch-start": "npx nodemon --exec 'yarn _build; node dist/index.js' ./dist/index.js -w ./src"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.17.1",
     "morgan": "^1.9.1"
   },
