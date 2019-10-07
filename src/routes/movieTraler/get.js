@@ -1,5 +1,7 @@
-// flow
+// @flow
 const log = require('../../helpers/log');
+
+const getImdbUri = require('./getImdbUri');
 
 const LOG_TAG = 'movie-trailer get';
 const BASE_URL = 'content.viaplay.se';
@@ -30,8 +32,16 @@ const get = async (req: RequestType, res: ResponseType) => {
   }
 
   try {
-    res.send('WORKING');
-    log(LOG_TAG,`${parameter} > 200 - Request OK.`);
+    const imdbUri = await getImdbUri(parameter);
+
+    if (!imdbUri) {
+      log(LOG_TAG, '404 - Not Found');
+      res.sendStatus(404);
+      return;
+    }
+
+    res.json(imdbUri);
+    log(LOG_TAG, `${imdbUri} > 200 - Request OK.`);
   } catch (error) {
     res.sendStatus(500);
     log(LOG_TAG, error);
