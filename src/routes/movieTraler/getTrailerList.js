@@ -5,15 +5,12 @@ const config = require('../../config')();
 
 type ItemType = { key: string };
 
-const YOUTUBE_URI = 'https://www.youtube.com/watch?v=';
-
 const filter = (item: ItemType): boolean => Boolean(item?.key);
 
 const mapper = (item: ItemType): ?string =>
-  item?.key ? YOUTUBE_URI + item.key : null;
+  item?.key ? config.youtubeUri + item.key : null;
 
 async function getTrailerList(id: string): Promise<?Array<string>> {
-  // TODO: Move URI to another file
   const response = await axios.get(config.getTmdbUri(id));
   const results = response.data?.results;
 

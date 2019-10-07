@@ -6,6 +6,7 @@ const config = () => ({
   port: process.env.PORT || '8888',
   getTmdbUri: id =>
     `http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`,
+  youtubeUri: 'https://www.youtube.com/watch?v=',
 });
 
 module.exports = config;
