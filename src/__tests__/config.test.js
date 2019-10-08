@@ -27,9 +27,10 @@ describe('config', () => {
     expect(port).toBe('5000');
   });
 
-  test('returns the server configuration', () => {
+  test('returns the tmdb uri', () => {
+    process.env.API_KEY = 'test-key';
     expect(config().getTmdbUri('test-id')).toBe(
-      'http://api.themoviedb.org/3/movie/test-id/videos?api_key=d9bacbdc47c8ef0f48ca0d4ac8059d2a'
+      'http://api.themoviedb.org/3/movie/test-id/videos?api_key=test-key'
     );
   });
 });

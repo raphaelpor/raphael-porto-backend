@@ -20,5 +20,3 @@ When I have to build a new API. I like to run some performance tests with a raw 
 For this project, I think that **Docker** would help to have a easy deployment system.
 
 For the cache system, I think that a RPAAS using **NGINX**, as a layer in front of the application, would help to deal with repeated requests. And **Redis** between the application and the other API, would help to scale the application.
-
-Also, I would like to move the `API_KEY` to a environment variable.

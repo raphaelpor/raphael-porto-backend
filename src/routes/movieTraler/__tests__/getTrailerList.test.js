@@ -1,6 +1,8 @@
 /* eslint-env jest */
 const axios = require('axios');
 
+jest.mock('../../../helpers/log');
+
 const getTrailerList = require('../getTrailerList').getTrailerList;
 const mapper = require('../getTrailerList').mapper;
 const filter = require('../getTrailerList').filter;
@@ -40,9 +42,10 @@ describe('getTrailerList.js', () => {
     const id = 'test-id';
 
     test('makes the request with given id', () => {
+      process.env.API_KEY = 'test-key';
       getTrailerList(id);
       expect(axios.get).toHaveBeenCalledWith(
-        'http://api.themoviedb.org/3/movie/test-id/videos?api_key=d9bacbdc47c8ef0f48ca0d4ac8059d2a'
+        'http://api.themoviedb.org/3/movie/test-id/videos?api_key=test-key'
       );
     });
 

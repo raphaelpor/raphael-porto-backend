@@ -16,6 +16,8 @@
 
 Runs the tests and a local server.
 
+**Important**: you need a TMDB API key to run the project. You can set one with the command: `env API_KEY=my-key yarn start`.
+
 ### watch-start
 
 Runs just a local server with watch mode
