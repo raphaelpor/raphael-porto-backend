@@ -1,6 +1,8 @@
 # raphael-porto-backend
 
-* **Read the comments of this test, on `COMMENTS.md` file.**
+* Read the comments of this test, on **`COMMENTS.md`** file.
+
+* See the **API Documentation** on **`docs/api-docs.html`** file.
 
 ## Setup environment
 

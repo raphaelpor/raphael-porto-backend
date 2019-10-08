@@ -1,0 +1,24 @@
+#%RAML 1.0
+title: Backend test
+version: 1
+baseUri: http://localhost:8888/
+
+/movie-trailer/{movie-uri}:
+  description: Use to get a movie trailer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: | # structural definition of a response (schema or type)
+              {
+                "trailers": [string]
+              }
+            example:
+              {
+                trailers: [
+                  "https://www.youtube.com/watch?v=YddkQoxkZMQ",
+                  "https://www.youtube.com/watch?v=n-7K_OjsDCQ"
+                ]
+              }
