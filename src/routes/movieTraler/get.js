@@ -61,10 +61,4 @@ const get = async (req: RequestType, res: ResponseType) => {
   }
 };
 
-// e.g.
-// https://www.imdb.com/title/tt1951266/?ref_ext_viaplay
-// http://api.themoviedb.org/3/movie/tt1951266/videos?api_key=d9bacbdc47c8ef0f48ca0d4ac8059d2a
-// key: "YddkQoxkZMQ",
-// https://www.youtube.com/watch?v=YddkQoxkZMQ
-
 module.exports = get;
