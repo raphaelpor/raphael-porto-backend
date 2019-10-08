@@ -8,9 +8,10 @@
   "scripts": {
     "_build": "rm -rf ./dist/*; yarn babel src/ -d dist/ --ignore src/**/*.test.js",
     "build": "yarn _build",
-    "deploy": "yarn audit; yarn build && echo 'No deploy configured.'",
+    "deploy": "yarn audit; yarn build && echo '\n### No deploy configured ###\n'",
     "flow": "flow status",
     "lint": "npx eslint src --fix",
+    "performance": "npx autocannon ",
     "prebuild": "yarn lint && yarn flow && yarn test",
     "start": "yarn build && node dist/index.js",
     "test": "jest --coverage",
