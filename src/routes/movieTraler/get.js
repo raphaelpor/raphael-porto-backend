@@ -2,7 +2,7 @@
 const log = require('../../helpers/log');
 
 const getMovieId = require('./getMovieId');
-const getTrailerList = require('./getTrailerList');
+const getTrailerList = require('./getTrailerList').getTrailerList;
 
 const LOG_TAG = 'movie-trailer GET';
 const BASE_URL = 'content.viaplay.se';

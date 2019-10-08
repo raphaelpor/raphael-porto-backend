@@ -1,7 +1,7 @@
 /* eslint-env jest */
 const get = require('../get');
 const getMovieId = require('../getMovieId');
-const getTrailerList = require('../getTrailerList');
+const getTrailerList = require('../getTrailerList').getTrailerList;
 
 jest.mock('../getMovieId');
 jest.mock('../getTrailerList');
